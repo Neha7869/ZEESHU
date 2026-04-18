@@ -10,10 +10,12 @@ dotenv.config({path:"./config/config.env"});
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 app.use(cors({
-    origin: FRONTEND_URL,
+    origin: "https://zeeshu-chi.vercel.app",
     credentials: true,
-    methods:["POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
 }));
+
+app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
